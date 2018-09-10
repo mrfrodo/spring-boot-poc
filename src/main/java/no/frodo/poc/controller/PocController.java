@@ -61,4 +61,15 @@ public class PocController {
 
         return ResponseEntity.ok().build();
     }
+
+    // Delete all Pocs
+    @DeleteMapping("/pocs/")
+    public ResponseEntity<?> deleteAllPoc() {
+        List<Poc> pocs = pocRepository.findAll();
+
+        for (Poc p : pocs) {
+            pocRepository.delete(p);
+        }
+        return ResponseEntity.ok().build();
+    }
 }
